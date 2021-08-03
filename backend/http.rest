@@ -1,26 +1,66 @@
 GET http://localhost:8800/api/excuses/intro/get HTTP/1.1
-
 ###
-
-GET http://localhost:8800/api/excuses/intro/get/6109b5b9573c0d10e5be4e3a HTTP/1.1
-
+GET http://localhost:8800/api/excuses/intro/get/6109b32896800a0fe60c4b62 HTTP/1.1
 ###
-
 POST http://localhost:8800/api/excuses/intro/create HTTP/1.1
 Content-Type: application/json
 
 {
   "title": "something changed and i don't know why"
 }
-
 ###
-
-POST http://localhost:8800/api/excuses/intro/edit/6109aa6ff0a1890ca8fa2432 HTTP/1.1
+PUT http://localhost:8800/api/excuses/intro/edit/6109b32896800a0fe60c4b62 HTTP/1.1
 Content-Type: application/json
 
 {
-  "title": "something wrong happened, but i don't know why"
+  "title": "something wrong RACLURE DE BIDET!"
 }
+###
+DELETE  http://localhost:8800/api/excuses/intro/delete/6109afcba690090ec802bf1d HTTP/1.1
+
+### DELAY
+GET http://localhost:8800/api/excuses/delay/get HTTP/1.1
 
 ###
-DELETE  http://localhost:8800/api/excuses/intro/delete/6109a99eac40fd0c851b2a3d HTTP/1.1
+GET http://localhost:8800/api/excuses/delay/get/6109c0bd01554f13b010a581 HTTP/1.1
+###
+POST http://localhost:8800/api/excuses/delay/create HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "something dhahahahaon't know why"
+}
+###
+PUT http://localhost:8800/api/excuses/delay/edit/6109b5b9573c0d10e5be4e3a HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "something wrong RACLURE DE BIDET!"
+}
+###
+DELETE  http://localhost:8800/api/excuses/delay/delete/6109c0bd01554f13b010a581 HTTP/1.1
+
+
+// SCAPEGOAT \\
+
+###
+GET http://localhost:8800/api/excuses/scape-goat/get HTTP/1.1
+
+###
+GET http://localhost:8800/api/excuses/scape-goat/get/6109c272743f12141d859a42 HTTP/1.1
+###
+POST http://localhost:8800/api/excuses/scape-goat/create HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "something yeah yeah yeah dhahahahaon't know why"
+}
+###
+PUT http://localhost:8800/api/excuses/scape-goat/edit/6109c272743f12141d859a42 HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "something wrong RACLURE DE BIDET!"
+}
+###
+DELETE  http://localhost:8800/api/excuses/scape-goat/delete/6109c272743f12141d859a42 HTTP/1.1

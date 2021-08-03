@@ -13,12 +13,10 @@ router.post('/create', async (req, res) => {
 })
 
 // READ
-router.get('/get/:id', async (req, res, next, id) => {
+router.get('/get/:id', async (req, res) => {
   try {
-
-      console.log(req.title)
-    Intro.findById(req.params.id, (err, intro) => {
-      console.log(intro)
+    Intro.findById({_id: req.params.id}, async (err, intro) => {
+    await res.status(200).json(intro)
       // res.send(intro)
     })
   } catch (error) {
@@ -29,9 +27,8 @@ router.get('/get/:id', async (req, res, next, id) => {
 // UPDATE
 router.put('/edit/:id', async (req, res) => {
   try {
-    if (req.body.title) title = req.body.title
-    Intro.update({_id: req.params.id, title}).then( () => {
-      res.send(title)
+    Intro.updateOne({_id: req.params.id}, req.body).then( () => {
+      res.status(200).json(req.body)
     })
   } catch (error) {
     res.status(500).json(error)
@@ -58,6 +55,5 @@ router.get('/get', async (req, res) => {
     res.status(500).json(error)
   }
 })
-
 
 module.exports = router
