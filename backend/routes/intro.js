@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const Intro = require('../models/Intro')
 
-// create new intro
+// CREATE
 router.post('/intro/create', async (req, res) => {
   try {
     const newIntro = new Intro(req.body)
@@ -12,17 +12,7 @@ router.post('/intro/create', async (req, res) => {
   }
 })
 
-// get all intros
-router.get('/intro/get', async (req, res) => {
-  try {
-    const intros = await Intro.find()
-    res.status(200).json(intros)
-  } catch (error) {
-    res.status(500).json(error)
-  }
-})
-
-// get one intro
+// READ
 router.get('/intro/get/:id', async (req, res, next, id) => {
   try {
     const intros = await Intro.find(id, (req, res) => {
@@ -37,5 +27,19 @@ router.get('/intro/get/:id', async (req, res, next, id) => {
     res.status(500).json(error)
   }
 })
+
+// UPDATE
+
+// DELETE
+// get all intros
+router.get('/intro/get', async (req, res) => {
+  try {
+    const intros = await Intro.find()
+    res.status(200).json(intros)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+})
+
 
 module.exports = router
