@@ -6,7 +6,7 @@ const DelaySchema = new mongoose.Schema({
     require: true,
     min: 10,
     max: 50,
-    unique: true,
+    // unique: true,
   }
 }, { timestamps: true }
 )

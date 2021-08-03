@@ -2,9 +2,9 @@ const router = require('express').Router()
 const Intro = require('../models/Intro')
 
 // CREATE
-router.post('/intro/create', async (req, res) => {
+router.post('/create', async (req, res) => {
+  const newIntro = new Intro(req.body)
   try {
-    const newIntro = new Intro(req.body)
     const savedIntro = await newIntro.save()
     res.status(200).json(savedIntro)
   } catch (error) {
@@ -13,26 +13,44 @@ router.post('/intro/create', async (req, res) => {
 })
 
 // READ
-router.get('/intro/get/:id', async (req, res, next, id) => {
+router.get('/get/:id', async (req, res, next, id) => {
   try {
-    const intros = await Intro.find(id, (req, res) => {
-      try {
-        res.status(200).json(intros)
-      } catch (error) {
-        res.status(500).json(error)
-      }
+
+      console.log(req.title)
+    Intro.findById(req.params.id, (err, intro) => {
+      console.log(intro)
+      // res.send(intro)
     })
-    res.status(200).json(intros)
   } catch (error) {
     res.status(500).json(error)
   }
 })
 
 // UPDATE
+router.put('/edit/:id', async (req, res) => {
+  try {
+    if (req.body.title) title = req.body.title
+    Intro.update({_id: req.params.id, title}).then( () => {
+      res.send(title)
+    })
+  } catch (error) {
+    res.status(500).json(error)
+  }
+})
 
 // DELETE
+router.delete('/delete/:id', async (req, res) => {
+  try {
+  Intro.deleteOne({_id: req.params.id}).then(() => {
+    res.status(200).json('intro deleted successfully.')
+  })
+  } catch (error) {
+    res.status(500).json(error)
+  }
+})
+
 // get all intros
-router.get('/intro/get', async (req, res) => {
+router.get('/get', async (req, res) => {
   try {
     const intros = await Intro.find()
     res.status(200).json(intros)

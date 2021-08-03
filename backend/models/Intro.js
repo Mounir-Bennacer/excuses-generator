@@ -4,9 +4,9 @@ const IntroSchema = new mongoose.Schema({
   title: {
     type: String,
     require: true,
-    min: 10,
+    min: 5,
     max: 50,
-    unique: true,
+    // unique: true,
   }
 }, { timestamps: true }
 )

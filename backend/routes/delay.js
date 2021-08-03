@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const Delay = require('../models/Delay')
 
-router.post('/delay/create', async (req, res) => {
+router.post('/create', async (req, res) => {
   try {
     const newDelay = new Delay(req.body)
     const savedDelay = await newDelay.save()
@@ -11,7 +11,7 @@ router.post('/delay/create', async (req, res) => {
   }
 })
 
-router.get('/delay/get', async (req, res) => {
+router.get('/get', async (req, res) => {
   try {
     const delays = await Delay.find()
     res.status(200).json(delays)
