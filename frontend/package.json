@@ -2,44 +2,24 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@craco/craco": "^6.2.0",
-    "@heroicons/react": "^1.0.3",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/react": "^17.0.15",
-    "axios": "^0.21.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.0.1"
-  },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "react-scripts eject"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "@heroicons/vue": "^1.0.3",
+    "axios": "^0.21.1",
+    "core-js": "^3.6.5",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0-0",
+    "vuex": "^4.0.0-0"
   },
   "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
     "autoprefixer": "^9",
     "postcss": "^7",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
