@@ -14,11 +14,5 @@ export default {
     Questions
   },
   methods: {},
-  mounted () {
-    axios
-    //
-      .get('http://localhost:8800/api/excuses/intro/get')
-      .then(({data}) => (console.log(data) ))
-  }
 }
 </script>

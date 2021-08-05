@@ -1,16 +1,16 @@
 <template>
 <div>
-  <Card />
+  <Cards />
 </div>
 </template>
 
 <script>
-import Card from '@/components/Card.vue'
+import Cards from '@/components/Cards.vue'
 
 export default {
   name: 'Questions',
   components: {
-    Card
+    Cards
   },
   props: {
     msg: String
