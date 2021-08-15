@@ -4,8 +4,8 @@ const DelaySchema = new mongoose.Schema({
   title: {
     type: String,
     require: true,
-    min: 10,
-    max: 50,
+    min: 5,
+    max: 30,
     // unique: true,
   }
 }, { timestamps: true }

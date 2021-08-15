@@ -5,18 +5,30 @@
       <div class="mt-6 grid grid-cols-2 gap-2 md:grid-cols-3 lg:mt-8">
         <div class="my-2 lg:mt-8">
         <h3 class="text-center text-2xl font-semibold uppercase text-gray-700 tracking-wider mb-4"> Choose an intro </h3>
-          <Form />
-          <Card v-for="(card, index) in 10" :key="index" :class="red"/>
+          <Card
+          v-for="intro in $store.state.intros" :key="intro._id"
+          :title="intro.title"
+          :selected="selectedIntro === intro._id"
+          @click.passive="selectedIntro = intro._id"
+          />
         </div>
         <div class="mt-6 lg:mt-8">
         <h3 class="text-center text-2xl font-semibold uppercase text-gray-700 tracking-wider mb-4"> Choose a scapegoat </h3>
-          <Form />
-          <Card v-for="(card, index) in 10" :key="index"/>
+          <Card v-for="scapegoat in $store.state.scapegoats"
+          :key="scapegoat._id"
+          :title="scapegoat.title"
+          :selected="selectedScapegoat === scapegoat._id"
+          @click.passive="selectedScapegoat = scapegoat._id"
+          />
         </div>
         <div class="mt-6 lg:mt-8">
         <h3 class="text-center text-2xl font-semibold uppercase text-gray-700 tracking-wider mb-4"> Choose a delay </h3>
-          <Form />
-          <Card v-for="(card, index) in 10" :key="index"/>
+          <Card v-for="delay in $store.state.delays"
+           :key="delay._id"
+           :title="delay.title"
+           :selected="selectedDelay === delay._id"
+           @click.passive="selectedDelay = delay._id"
+          />
         </div>
       </div>
     </div>
@@ -24,13 +36,19 @@
 </template>>
 <script>
 import Card from '@/components/Card.vue'
-import Form from '@/components/Form.vue'
 
   export default {
     name: 'Cards',
+    data() {
+      return{
+        selectedIntro: -1,
+        selectedScapegoat: -1,
+        selectedDelay: -1,
+      }
+    },
     components: {
       Card,
-      Form,
-    }
+    },
+    methods: {}
   }
 </script>

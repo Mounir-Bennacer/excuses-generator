@@ -4,11 +4,13 @@ const bodyParser = require('body-parser')
 const helmet = require('helmet')
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cors = require('cors');
 const introRoute = require('./routes/intro')
 const scapeGoatRoute = require('./routes/scape-goat')
 const delayRoute = require('./routes/delay')
 // https://expressjs.com/en/advanced/best-practice-security.html
 app.use(helmet())
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 

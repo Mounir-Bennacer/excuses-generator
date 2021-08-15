@@ -1,28 +1,32 @@
 <template>
         <div
-        :class="{notClicked: !isClicked, clicked: isClicked}"
-        @click="toggleClick()"
-        class="flex justify-center py-4 px-8 mb-2 bg-gray-300">
-          <img class="max-h-12" src="https://tailwindui.com/img/logos/transistor-logo-gray-400.svg" alt="Workcation" />
+        class="flex justify-center py-4 px-8 mb-2 rounded-md cursor-pointer"
+        :class="[selected ? 'bg-red-400' : 'bg-gray-100']"
+        >
+          <p class="font-medium text-xl"
+          :class="[ selected ? 'text-white' : 'text-gray-700']"
+          >
+          {{ title }}
+          </p>
         </div>
 </template>
 
-<script>
+<script lang="ts">
+import { mapState, mapGetters} from 'vuex'
 
-export default {
+export default{
   name: 'Card',
   data() {
-    return {
-      isClicked: false,
+    return {}
+  },
+  props: {
+    title: {
+      type: String
+    },
+    selected: {
+      type: Boolean
     }
   },
-  components: {
-  },
-  methods: {
-    toggleClick(item){
-      this.isClicked = !this.isClicked
-      console.log(this.isClicked)
-    }
-  }
+  methods: {}
 }
 </script>

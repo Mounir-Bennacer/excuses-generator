@@ -5,7 +5,7 @@ const IntroSchema = new mongoose.Schema({
     type: String,
     require: true,
     min: 5,
-    max: 50,
+    max: 30,
     // unique: true,
   }
 }, { timestamps: true }

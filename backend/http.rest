@@ -1,19 +1,19 @@
 GET http://localhost:8800/api/excuses/intro/get HTTP/1.1
 ###
-GET http://localhost:8800/api/excuses/intro/get/610a7c40f321ef61d1c6ade9 HTTP/1.1
+GET http://localhost:8800/api/excuses/intro/get/6109bd2df6bfd213507d5d95 HTTP/1.1
 ###
 POST http://localhost:8800/api/excuses/intro/create HTTP/1.1
 Content-Type: application/json
 
 {
-  "title": "something changed and i don't know why"
+  "title": "#4 - something changed and i know why"
 }
 ###
 PUT http://localhost:8800/api/excuses/intro/edit/6109b32896800a0fe60c4b62 HTTP/1.1
 Content-Type: application/json
 
 {
-  "title": "something wrong RACLURE DE BIDET!"
+  "title": "something wrong happened,sorry!"
 }
 ###
 DELETE  http://localhost:8800/api/excuses/intro/delete/6109afcba690090ec802bf1d HTTP/1.1
@@ -53,10 +53,10 @@ POST http://localhost:8800/api/excuses/scape-goat/create HTTP/1.1
 Content-Type: application/json
 
 {
-  "title": "something yeah yeah yeah dhahahahaon't know why"
+  "title": "ya know what"
 }
 ###
-PUT http://localhost:8800/api/excuses/scape-goat/edit/6109c272743f12141d859a42 HTTP/1.1
+PUT http://localhost:8800/api/excuses/scape-goat/edit/6109c280743f12141d859a44 HTTP/1.1
 Content-Type: application/json
 
 {
