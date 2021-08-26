@@ -11,8 +11,8 @@
           v-for="intro in $store.state.intros" :key="intro._id"
           :title="intro.title"
           :selected="selectedIntro === intro._id"
-          :bgColor="'bg-red-400'"
-          @click.prevent="selectedIntro = intro._id; selectItem(intro._id)"
+          @click.passive="selectedIntro = intro._id"
+          :color="'bg-green-400 bg-opacity-70'"
           />
         </div>
         <div class="mt-6 lg:mt-8">
@@ -21,8 +21,8 @@
           :key="scapegoat._id"
           :title="scapegoat.title"
           :selected="selectedScapegoat === scapegoat._id"
-          :bgColor="'bg-yellow-400'"
-          @click.prevent="selectedScapegoat = scapegoat._id"
+          @click.passive="selectedScapegoat = scapegoat._id"
+          :color="'bg-yellow-400 bg-opacity-70'"
           />
         </div>
         <div class="mt-6 lg:mt-8">
@@ -31,8 +31,8 @@
            :key="delay._id"
            :title="delay.title"
            :selected="selectedDelay === delay._id"
-           :bgColor="'bg-blue-400'"
-           @click.prevent="selectedDelay = delay._id"
+           @click.passive="selectedDelay = delay._id"
+          :color="'bg-blue-400 bg-opacity-70'"
           />
         </div>
       </div>
