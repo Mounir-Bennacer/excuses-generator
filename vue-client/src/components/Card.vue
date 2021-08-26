@@ -1,10 +1,10 @@
 <template>
-        <div
-        class="flex justify-center py-4 px-8 mb-2 rounded-md cursor-pointer"
-        :class="[selected ? 'bg-red-400' : 'bg-gray-100']"
+      <div
+      class="flex justify-center py-4 px-8 mb-2 rounded-md cursor-pointer"
+      :class="[selected ? `${bgColor} bg-opacity-50 shadow-md` : bgColor]"
         >
-          <p class="font-medium text-xl"
-          :class="[ selected ? 'text-white' : 'text-gray-700']"
+          <p class="text-xl"
+          :class="[ selected ? 'text-white font-semibold underline' : 'text-gray-700 font-medium']"
           >
           {{ title }}
           </p>
@@ -25,6 +25,9 @@ export default{
     },
     selected: {
       type: Boolean
+    },
+    bgColor: {
+      type: String
     }
   },
   methods: {}

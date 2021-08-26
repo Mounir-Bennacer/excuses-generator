@@ -41,16 +41,9 @@ export default createStore({
     }
   },
   getters: {
-    selectItem(state){
-      let item = state.intros.find((i) => {
-        i.id === state.selectedItemId
-      })
-
-      if(item){
-        return item.items
-      }
-      return []
-    }
+    selectItem : (state) => (id) => {
+      return state.intros.find(intro => intro.id === id)
+    },
   },
   modules: {},
   plugins: [
