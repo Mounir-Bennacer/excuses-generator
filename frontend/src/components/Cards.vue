@@ -10,6 +10,7 @@
           :title="intro.title"
           :selected="selectedIntro === intro._id"
           @click.passive="selectedIntro = intro._id"
+          :color="'bg-green-400 bg-opacity-70'"
           />
         </div>
         <div class="mt-6 lg:mt-8">
@@ -19,6 +20,7 @@
           :title="scapegoat.title"
           :selected="selectedScapegoat === scapegoat._id"
           @click.passive="selectedScapegoat = scapegoat._id"
+          :color="'bg-yellow-400 bg-opacity-70'"
           />
         </div>
         <div class="mt-6 lg:mt-8">
@@ -28,6 +30,7 @@
            :title="delay.title"
            :selected="selectedDelay === delay._id"
            @click.passive="selectedDelay = delay._id"
+          :color="'bg-blue-400 bg-opacity-70'"
           />
         </div>
       </div>
