@@ -4,16 +4,14 @@ import axios from 'axios'
 export default createStore({
   state: {
     intros : [],
-    intro : '',
     scapegoats: [],
-    scapegoat: '',
     delays: [],
-    delay: '',
     selectedItemId: -1,
     selectedIntro: -1,
     selectedScapegoat: -1,
     selectedDelay: -1,
     excuse : '',
+    isLoading : false,
   },
   mutations: {
     loadIntros(state, payload){
@@ -25,6 +23,10 @@ export default createStore({
     loadDelays(state, payload){
       state.delays = payload
     },
+    checkIsLoading(state, payload){
+
+    }
+
   },
   actions: {
     async init({commit}){

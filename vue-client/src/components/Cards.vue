@@ -4,7 +4,10 @@
       <button
       @click="$store.getters.shuffleExcuse"
       class="uppercase bg-blue-600 w-full mt-6 px-5 py-5 font-semibold text-white rounded-md shadow-md hover:bg-blue-700 hover:shadow-lg">Generate excuse</button>
-      <h1 class="mt-10 font-semibold text-2xl">{{ $store.state.excuse }}</h1>
+      <div>
+      <loader :active="true" message="Loading, please wait..."/>
+        <h1 v-if="$store.state.excuse" class="mt-10 py-5 font-semibold bg-gray-200 text-2xl text-gray-700 rounded-md">{{ $store.state.excuse }}</h1>
+      </div>
       <div class="grid grid-cols-2 gap-2 md:grid-cols-3 lg:mt-8">
         <div class="my-2 lg:mt-8">
         <h3 class="text-center text-2xl font-semibold uppercase text-gray-700 tracking-wider mb-4"> Choose an intro </h3>
@@ -41,12 +44,14 @@
 </template>>
 <script>
 import Card from '@/components/Card.vue'
+import Loader from '@/components/Loader'
 import { mapGetters, mapState } from 'vuex'
 
   export default {
     name: 'Cards',
     components: {
       Card,
+      Loader,
     },
     computed: {
       ...mapState(['selectedIntro', 'selectedScapegoat','selectedDelay']),
