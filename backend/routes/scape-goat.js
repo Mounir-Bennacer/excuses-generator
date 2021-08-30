@@ -1,19 +1,19 @@
 const router = require('express').Router()
-const scapeGoatController = require('../controllers/scapeGoatController')
+const {scape_goat_create, scape_goat_read, scape_goat_update, scape_goat_delete, scape_goat_get_all} = require('../controllers/scapeGoatController')
 
 // CREATE
-router.post('/create', scapeGoatController.scape_goat_create)
+router.post('/create', scape_goat_create)
 
 // READ
-router.get('/get/:id', scapeGoatController.scape_goat_read)
+router.get('/get/:id', scape_goat_read)
 
 // UPDATE
-router.put('/edit/:id', scapeGoatController.scape_goat_update)
+router.put('/edit/:id', scape_goat_update)
 
 // DELETE
-router.delete('/delete/:id', scapeGoatController.scape_goat_delete)
+router.delete('/delete/:id', scape_goat_delete)
 
 // get all ScapeGoats
-router.get('/get', scapeGoatController.scape_goat_get_all)
+router.get('/get', scape_goat_get_all)
 
 module.exports = router

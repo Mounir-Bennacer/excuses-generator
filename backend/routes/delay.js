@@ -1,19 +1,19 @@
 const router = require('express').Router()
-const delayController = require('../controllers/delayController')
+const {delay_create, delay_read, delay_update, delay_delete, delay_get_all} = require('../controllers/delayController')
 
 // CREATE
-router.post('/create', delayController.delay_create)
+router.post('/create', delay_create)
 
 // READ
-router.get('/get/:id', delayController.delay_read)
+router.get('/get/:id', delay_read)
 
 // UPDATE
-router.put('/edit/:id', delayController.delay_update)
+router.put('/edit/:id', delay_update)
 
 // DELETE
-router.delete('/delete/:id', delayController.delay_delete)
+router.delete('/delete/:id', delay_delete)
 
 // get all Delays
-router.get('/get', delayController.delay_get_all)
+router.get('/get', delay_get_all)
 
 module.exports = router

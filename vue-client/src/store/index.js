@@ -3,10 +3,17 @@ import axios from 'axios'
 
 export default createStore({
   state: {
-    intros : [ ],
-    scapegoats: [ ],
-    delays: [ ],
+    intros : [],
+    intro : '',
+    scapegoats: [],
+    scapegoat: '',
+    delays: [],
+    delay: '',
     selectedItemId: -1,
+    selectedIntro: -1,
+    selectedScapegoat: -1,
+    selectedDelay: -1,
+    excuse : '',
   },
   mutations: {
     loadIntros(state, payload){
@@ -41,8 +48,16 @@ export default createStore({
     }
   },
   getters: {
-    selectItem : (state) => (id) => {
-      return state.intros.find(intro => intro.id === id)
+    // selectItem : (state) => (id) => {
+    //   return state.intros.find(intro => intro.id === id)
+    // },
+
+    shuffleExcuse(state, payload){
+      state.intro = state.intros[Math.floor(Math.random() * state.intros.length)].title
+      state.scapegoat = state.scapegoats[Math.floor(Math.random() * state.scapegoats.length)].title
+      state.delay = state.delays[Math.floor(Math.random() * state.delays.length)].title
+
+      state.excuse = `${state.intro} ${state.scapegoat} ${state.delay}`
     },
   },
   modules: {},
