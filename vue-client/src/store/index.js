@@ -1,17 +1,17 @@
 import { createLogger, createStore } from 'vuex'
-import axios from 'axios'
 
 export default createStore({
   state: {
     intros : [],
     scapegoats: [],
     delays: [],
-    selectedItemId: -1,
+    intro : '',
+    scapegoat: '',
+    delay: '',
     selectedIntro: -1,
     selectedScapegoat: -1,
     selectedDelay: -1,
     excuse : '',
-    isLoading : false,
   },
   mutations: {
     loadIntros(state, payload){
@@ -23,10 +23,24 @@ export default createStore({
     loadDelays(state, payload){
       state.delays = payload
     },
-    checkIsLoading(state, payload){
+    selectIntro(state, payload){
+      state.selectedIntro = payload
+      state.intro = state.intros.find(intro => intro._id === payload).title
 
-    }
+      state.excuse = `${state.intro} ${state.scapegoat} ${state.delay}`
+    },
+    selectScapegoat(state, payload){
+      state.selectedScapegoat = payload
+      state.scapegoat = state.scapegoats.find(scapegoat => scapegoat._id === payload).title
 
+      state.excuse = `${state.intro} ${state.scapegoat} ${state.delay}`
+    },
+    selectDelay(state, payload){
+      state.selectedDelay = payload
+      state.delay = state.delays.find(delay => delay._id === payload ).title
+
+      state.excuse = `${state.intro} ${state.scapegoat} ${state.delay}`
+    },
   },
   actions: {
     async init({commit}){
@@ -50,16 +64,20 @@ export default createStore({
     }
   },
   getters: {
-    // selectItem : (state) => (id) => {
-    //   return state.intros.find(intro => intro.id === id)
-    // },
-
     shuffleExcuse(state, payload){
-      state.intro = state.intros[Math.floor(Math.random() * state.intros.length)].title
-      state.scapegoat = state.scapegoats[Math.floor(Math.random() * state.scapegoats.length)].title
-      state.delay = state.delays[Math.floor(Math.random() * state.delays.length)].title
+      const randomIntro = state.intros[Math.floor(Math.random() * state.intros.length)]
+      state.intro = randomIntro.title
+      state.selectedIntro = randomIntro._id
 
-      state.excuse = `${state.intro} ${state.scapegoat} ${state.delay}`
+      const randomScapegoat = state.scapegoats[Math.floor(Math.random() * state.scapegoats.length)]
+      state.scapegoat = randomScapegoat.title
+      state.selectedScapegoat = randomScapegoat._id
+
+      const randomDelay = state.delays[Math.floor(Math.random() * state.delays.length)]
+      state.delay = randomDelay.title
+      state.selectedDelay = randomDelay._id
+
+      state.excuse = `${state.intro}, ${state.scapegoat} ${state.delay}`
     },
   },
   modules: {},
