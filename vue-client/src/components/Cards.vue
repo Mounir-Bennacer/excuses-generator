@@ -5,7 +5,6 @@
       @click="$store.getters.shuffleExcuse"
       class="uppercase bg-blue-600 w-full mt-6 px-5 py-5 font-semibold text-white rounded-md shadow-md hover:bg-blue-700 hover:shadow-lg">Generate excuse</button>
       <div>
-      <!-- <loader :active="true" message="Loading, please wait..."/> -->
         <h1 v-if="excuse" class="mt-10 py-5 font-semibold bg-gray-200 text-2xl text-gray-700 rounded-md">{{ excuse }}</h1>
       </div>
       <div class="grid grid-cols-2 gap-2 md:grid-cols-3 lg:mt-8">
@@ -41,7 +40,7 @@
         </div>
       </div>
     </div>
-</template>>
+</template>
 <script>
 import Card from '@/components/Card.vue'
 import Loader from '@/components/Loader'

@@ -72,9 +72,9 @@ POST http://localhost:8800/api/register HTTP/1.1
 Content-Type: application/json
 
 {
-  "username": "mounir",
-  "email": "mounir1@test.com",
-  "password": "password123"
+  "username": "noussa bennacer",
+  "email": "noussa@bennacer.com",
+  "password": "password"
 }
 
 ###
@@ -83,8 +83,8 @@ POST http://localhost:8800/api/login HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "mounir1@test.com",
-  "password": "password123"
+  "email": "noussa@bennacer.com",
+  "password": "password"
 }
 
 ###
