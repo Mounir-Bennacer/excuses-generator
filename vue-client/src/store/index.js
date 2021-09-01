@@ -4,9 +4,11 @@ import axios from 'axios'
 export default createStore({
   state: {
     intros : [],
+    intro : '',
     scapegoats: [],
+    scapegoat: '',
     delays: [],
-    selectedItemId: -1,
+    delay: '',
     selectedIntro: -1,
     selectedScapegoat: -1,
     selectedDelay: -1,
@@ -23,10 +25,18 @@ export default createStore({
     loadDelays(state, payload){
       state.delays = payload
     },
-    checkIsLoading(state, payload){
-
-    }
-
+    selectIntro(state, payload) {
+      state.selectedIntro = payload
+      state.excuse = `${state.intro} ${state.scapegoat} ${state.delay}`
+    },
+    selectScapegoat(state, payload) {
+      state.selectedScapegoat = payload
+      state.excuse = `${state.intro} ${state.scapegoat} ${state.delay}`
+    },
+    selectDelay(state, payload) {
+      state.selectedDelay = payload
+      state.excuse = `${state.intro} ${state.scapegoat} ${state.delay}`
+    },
   },
   actions: {
     async init({commit}){
@@ -50,10 +60,6 @@ export default createStore({
     }
   },
   getters: {
-    // selectItem : (state) => (id) => {
-    //   return state.intros.find(intro => intro.id === id)
-    // },
-
     shuffleExcuse(state, payload){
       state.intro = state.intros[Math.floor(Math.random() * state.intros.length)].title
       state.scapegoat = state.scapegoats[Math.floor(Math.random() * state.scapegoats.length)].title
