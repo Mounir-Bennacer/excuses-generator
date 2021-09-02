@@ -74,7 +74,6 @@ Content-Type: application/json
 {
   "username": "noussa bennacer",
   "email": "noussa@bennacer.com",
-  "password": "password"
 }
 
 ###

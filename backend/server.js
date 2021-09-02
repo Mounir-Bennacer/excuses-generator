@@ -9,6 +9,7 @@ const introRoute = require('./routes/intro')
 const scapeGoatRoute = require('./routes/scape-goat')
 const delayRoute = require('./routes/delay')
 const signupRoute = require('./routes/auth')
+const errorHandler = require('./middlewares/error')
 
 const jwt = require('jsonwebtoken')
 
@@ -18,20 +19,20 @@ app.use(cors())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
+// errorHandler MUST be the last middleware
+app.use(errorHandler)
 dotenv.config();
 
 mongoose.connect(
   process.env.MONGO_URL,
-   {
-     useNewUrlParser: true,
-     useUnifiedTopology: true,
-      useCreateIndex: true
-    }
-    ).then(() =>
-    {
-      console.log("MongoDB connected!");
-    })
-    .catch((err) => console.log(err));
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+  }).then(() =>
+  {
+    console.log("MongoDB connected!");
+  }).catch((err) => console.log(err));
 
 // function generateAccessToken(username) {
 //   return jwt.sign(username, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
