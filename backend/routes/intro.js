@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const {intro_create, intro_read, intro_update, intro_delete,intro_get_all} = require('../controllers/introController')
-const { jwtAuthorization } = require('./jwtAuthorization')
+const { protect } = require('../middlewares/auth')
 
 // CREATE
 router.post('/create', intro_create)
@@ -15,6 +15,6 @@ router.put('/edit/:id', intro_update)
 router.delete('/delete/:id', intro_delete)
 
 // get all intros
-router.get('/get', jwtAuthorization, intro_get_all)
+router.get('/get', protect, intro_get_all)
 
 module.exports = router
