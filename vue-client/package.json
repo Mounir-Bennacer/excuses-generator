@@ -12,6 +12,7 @@
     "@tailwindcss/forms": "^0.3.3",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "v-switch-case": "^1.0.3",
     "vue": "^3.0.0",
     "vue-router": "^4.0.11",
     "vuex": "^4.0.2"
