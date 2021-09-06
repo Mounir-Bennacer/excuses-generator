@@ -2,13 +2,13 @@
   <div class="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
       <h2 class="text-center text-3xl font-extrabold text-gray-900">
-        Sign in to your account
+        Register a new account
       </h2>
       <p class="mt-2 text-center text-sm text-gray-600">
         Or
-        <a href="#" class="font-medium text-blue-600 hover:text-blue-500">
-          start your 14-day free trial
-        </a>
+        <router-link to="/login" class="font-medium text-blue-600 hover:text-blue-500">
+          Login to you account
+        </router-link>
       </p>
     </div>
 
@@ -21,6 +21,7 @@
             </label>
             <div class="mt-1">
               <input
+                v-model="username"
                 id="username"
                 name="username"
                 type="text"
@@ -36,6 +37,7 @@
             </label>
             <div class="mt-1">
               <input
+                v-model="email"
                 id="email"
                 name="email"
                 type="email"
@@ -52,6 +54,7 @@
             </label>
             <div class="mt-1">
               <input
+                v-model="password"
                 id="password"
                 name="password"
                 type="password"
@@ -62,25 +65,7 @@
             </div>
           </div>
 
-          <div class="flex items-center justify-between">
-            <div class="flex items-center">
-              <input
-                id="remember-me"
-                name="remember-me"
-                type="checkbox"
-                class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-              />
-              <label for="remember-me" class="ml-2 block text-sm text-gray-900">
-                Remember me
-              </label>
-            </div>
-
-            <div class="text-sm">
-              <a href="#" class="font-medium text-blue-600 hover:text-blue-500">
-                Forgot your password?
-              </a>
-            </div>
-          </div>
+          <div class="flex items-center justify-between"></div>
 
           <div>
             <button
@@ -112,9 +97,34 @@
 </template>
 <script>
 import SocialMedia from '@/components/Social-Media.vue';
+import axios from 'axios';
 
 export default {
   name: 'Register',
-  components: { SocialMedia }
+  data() {
+    return {
+      username: null,
+      email: null,
+      password: null
+    };
+  },
+  components: { SocialMedia },
+  methods: {
+    async handleRegister() {
+      const data = {
+        username: this.username,
+        email: this.email,
+        password: this.password
+      };
+
+      const user = await axios.post('/api/register', {
+        auth: {
+          data
+        }
+      });
+
+      console.log(user);
+    }
+  }
 };
 </script>

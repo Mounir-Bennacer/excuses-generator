@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const bodyParser = require('body-parser')
 const helmet = require('helmet')
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
@@ -8,16 +7,14 @@ const cors = require('cors');
 const introRoute = require('./routes/intro')
 const scapeGoatRoute = require('./routes/scape-goat')
 const delayRoute = require('./routes/delay')
-const signupRoute = require('./routes/auth')
+const authRoute = require('./routes/auth')
 const errorHandler = require('./middlewares/error')
-
-const jwt = require('jsonwebtoken')
 
 // https://expressjs.com/en/advanced/best-practice-security.html
 app.use(helmet())
 app.use(cors())
-app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 // errorHandler MUST be the last middleware
 app.use(errorHandler)
@@ -41,7 +38,7 @@ mongoose.connect(
 app.use('/api/excuses/intro', introRoute)
 app.use('/api/excuses/scape-goat', scapeGoatRoute)
 app.use('/api/excuses/delay', delayRoute)
-app.use('/api', signupRoute)
+app.use('/api/excuses/user', authRoute)
 
 
 const port = process.env.PORT

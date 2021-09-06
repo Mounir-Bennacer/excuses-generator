@@ -1,18 +1,23 @@
 const User = require('../models/User')
 const ErrorResponse = require('../utils/ErrorResponse')
 
-module.exports.register = async (req, res, next) => {
-  const {username, email, password} = req.body
+exports.register = async (req, res, next) => {
+  const {username, email, password} = req.body;
+
   try {
-    const user = await User.create({ username, email, password })
+    const user = await User.create({
+      username,
+      email,
+      password
+    });
 
     sendToken(user, 201, res)
   } catch (error) {
-    next(error)
+    next(new ErrorResponse(error.message, error.statusCode))
   }
 }
 
-module.exports.login = async (req, res, next) => {
+exports.login = async (req, res, next) => {
   const {email, password} = req.body
 
   if(!email || !password){
@@ -36,7 +41,7 @@ module.exports.login = async (req, res, next) => {
   }
 }
 
-module.exports.forgotpassword = async (req, res) => {
+exports.forgotpassword = async (req, res) => {
   try {
     res.send('forgot password route')
    } catch (error) {

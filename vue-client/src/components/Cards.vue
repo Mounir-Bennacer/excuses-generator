@@ -10,11 +10,15 @@
       Generate excuse
     </button>
     <div>
+      <span id="intro"></span>
+      <span id="scapegoat"></span>
+      <span id="delay"></span>
       <h1 v-if="excuse" class="mt-10 py-5 font-semibold bg-gray-200 text-2xl text-gray-700 rounded-md">{{ excuse }}</h1>
     </div>
     <div class="grid grid-cols-2 gap-2 md:grid-cols-3 lg:mt-8">
       <div class="my-2 lg:mt-8">
         <h3 class="text-center text-2xl font-semibold uppercase text-gray-700 tracking-wider mb-4">Choose an intro</h3>
+        <!-- <teleport to="#intro"> -->
         <Card
           v-for="intro in intros"
           :key="intro._id"
@@ -23,6 +27,7 @@
           @click.passive="$store.commit('selectIntro', intro._id)"
           :color="'bg-green-400 bg-opacity-70'"
         />
+        <!-- </teleport> -->
       </div>
       <div class="mt-6 lg:mt-8">
         <h3 class="text-center text-2xl font-semibold uppercase text-gray-700 tracking-wider mb-4">

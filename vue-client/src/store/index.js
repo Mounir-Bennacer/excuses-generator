@@ -1,4 +1,7 @@
+import { registerRuntimeCompiler } from '@vue/runtime-core'
 import { createLogger, createStore } from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
+import auth from './modules/auth'
 
 export default createStore({
   state: {
@@ -63,7 +66,7 @@ export default createStore({
       .then(delays => {
         commit('loadDelays', delays)
       })
-    }
+    },
   },
   getters: {
     shuffleExcuse(state, payload){
@@ -82,8 +85,9 @@ export default createStore({
       state.excuse = `${state.intro}, ${state.scapegoat} ${state.delay}`
     },
   },
-  modules: {},
+  modules: {auth},
   plugins: [
-    createLogger()
+    createLogger(),
+    createPersistedState()
   ]
 })
