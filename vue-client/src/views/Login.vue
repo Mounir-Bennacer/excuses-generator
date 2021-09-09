@@ -19,12 +19,7 @@
 
         <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
             <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-                <!-- <Form v-slot="{ errors }"> -->
-                <!-- <Field name="field" :rules="isRequired" /> -->
-
-                <!-- <span>{{ errors.field }}</span> -->
-                <!-- </Form> -->
-                <form class="space-y-6" @submit.prevent="handleLogin">
+                <form class="space-y-6" @submit.prevent="login">
                     <div>
                         <label
                             for="email"
@@ -34,7 +29,7 @@
                         </label>
                         <div class="mt-1">
                             <input
-                                v-model="form.email"
+                                v-model="user.email"
                                 id="email"
                                 name="email"
                                 type="email"
@@ -54,7 +49,7 @@
                         </label>
                         <div class="mt-1">
                             <input
-                                v-model="form.password"
+                                v-model="user.password"
                                 id="password"
                                 name="password"
                                 type="password"
@@ -125,39 +120,28 @@
         </div>
     </div>
 </template>
-<script>
-import { reactive } from 'vue'
-// import { Field, Form } from 'vee-validate';
+<script setup>
+import { useRouter } from 'vue-router'
+import { reactive, ref } from 'vue'
+let user = reactive({
+    email: '',
+    password: '',
+})
+let showError = ref(false)
+let router = useRouter()
 
-export default {
-    name: 'Login',
-    setup() {
-        const user = reactive({
-            email: '',
-            password: '',
-        })
-        const showError = false
-
-
-        const login = async () => {
-            try {
-                await fetch('http://localhost:8800/api/excuses/user/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(user),
-                    })
-                    this.router.push('/')
-                    this.showError = false
-            } catch (error) {
-                this.showError = true
-                }
-        },
-
-        return {
-            user,
-            login,
-            showError,
-        }
-    },
+let login = async () => {
+    const data = await fetch('http://localhost:8800/api/excuses/user/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        // credentials: 'include',
+        body: JSON.stringify(user),
+    })
+    if (!data.ok) {
+        console.log('error')
+        showError.value = true
+        return
+    }
+    await router.push('/')
 }
 </script>

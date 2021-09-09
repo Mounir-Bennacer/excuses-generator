@@ -82,7 +82,7 @@
 <script>
 import Card from '@/components/Card.vue'
 import Loader from '@/components/Loader'
-import { mapGetters, mapState, mapMutations } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
     name: 'Cards',

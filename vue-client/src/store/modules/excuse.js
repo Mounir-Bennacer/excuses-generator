@@ -32,6 +32,9 @@ const actions = {
         commit('loadDelays', delays)
       })
     },
+    getShuffle() {
+      this.shuffleExcuse()
+    }
 }
 const mutations = {
     loadIntros(state, payload){
@@ -78,7 +81,6 @@ const getters = {
 
       state.excuse = `${state.intro}, ${state.scapegoat} ${state.delay}`
     },
-
 }
 
 export default {

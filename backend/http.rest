@@ -6,7 +6,7 @@ POST http://localhost:8800/api/excuses/intro/create HTTP/1.1
 Content-Type: application/json
 
 {
-  "title": "Please forgive my absence,"
+  "title": "Trust me when i tell you"
 }
 
 ###
@@ -14,7 +14,7 @@ PUT http://localhost:8800/api/excuses/intro/edit/6112e4721cf2f814573c41ce HTTP/1
 Content-Type: application/json
 
 {
-  "title": "You will not believe me but,"
+  "title": "take it easy but"
 }
 ###
 DELETE  http://localhost:8800/api/excuses/intro/delete/6109bd2df6bfd213507d5d95 HTTP/1.1
@@ -32,7 +32,7 @@ POST http://localhost:8800/api/excuses/scape-goat/create HTTP/1.1
 Content-Type: application/json
 
 {
-  "title": "a professional cricket team"
+  "title": "the Pope"
 }
 ###
 PUT http://localhost:8800/api/excuses/scape-goat/edit/611956e123bd3c4db2087435 HTTP/1.1
@@ -54,7 +54,7 @@ POST http://localhost:8800/api/excuses/delay/create HTTP/1.1
 Content-Type: application/json
 
 {
-  "title": "found me box of human teeth"
+  "title": "pooped on my computer"
 }
 ###
 PUT http://localhost:8800/api/excuses/delay/edit/61278204995d6a2a625ab2ff HTTP/1.1

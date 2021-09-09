@@ -1,4 +1,6 @@
 const router = require('express').Router()
+const {protect} = require('../middlewares/auth')
+
 const {
     intro_create,
     intro_read,
@@ -6,19 +8,18 @@ const {
     intro_delete,
     intro_get_all,
 } = require('../controllers/introController')
-const { protect } = require('../middlewares/auth')
 
 // CREATE
-router.post('/create', intro_create)
+router.post('/create',protect, intro_create)
 
 // READ
-router.get('/get/:id', intro_read)
+router.get('/get/:id',protect, intro_read)
 
 // UPDATE
-router.put('/edit/:id', intro_update)
+router.put('/edit/:id',protect, intro_update)
 
 // DELETE
-router.delete('/delete/:id', intro_delete)
+router.delete('/delete/:id',protect, intro_delete)
 
 // get all intros
 router.get('/get', intro_get_all)
