@@ -5,46 +5,35 @@ const state = {
 }
 const getters = {
   isAuthenticated: state => !!state.user,
-    // StatePosts: state => state.posts,
     StateUser: state => state.user,
 }
 const actions = {
-  async Register({dispatch}, form) {
+  async register({dispatch}, form) {
     await axios.post('register', form)
     let UserForm = new FormData()
     UserForm.append('email', form.email)
     UserForm.append('password', form.password)
     await dispatch('LogIn', UserForm)
   },
-  async LogIn({commit}, User) {
+  async login({commit}, User) {
     await axios.post('login', User)
     await commit('setUser', User.get('username'))
   },
-// async CreateExcuse({dispatch}, post) {
-//   await axios.post('post', post)
-//   await dispatch('GetPosts')
-// },
-// async GetPosts({ commit }){
-//   let response = await axios.get('posts')
-//   commit('setPosts', response.data)
-// },
-async LogOut({commit}){
-  let user = null
-  commit('logout', user)
-}
+  async logOut({commit}){
+    let user = null
+    commit('logout', user)
+  }
 }
 const mutations = {
   setUser(state, username){
         state.user = username
     },
-    // setPosts(state, posts){
-    //     state.posts = posts
-    // },
-    LogOut(state){
+    logOut(state){
         state.user = null
     },
 }
 export default {
+  namespaced: true,
   state,
   getters,
   actions,

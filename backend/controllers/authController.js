@@ -59,6 +59,8 @@ module.exports.resetpassword = async (req, res) => {
 
 const sendToken = (user, statusCode, res) => {
   const token = user.getSignedToken()
+
+  console.log(token)
   res.status(statusCode).json({
     success: true,
     token

@@ -90,7 +90,11 @@
                             </router-link>
                         </div>
                     </div>
-                    <p v-if="showError" id="error">
+                    <p
+                        v-if="showError"
+                        id="error"
+                        class="bg-red-200 py-3 px-4 rounded-md font-semibold text-red-600 shadow-md"
+                    >
                         Username or Password is incorrect
                     </p>
                     <div>
@@ -122,34 +126,38 @@
     </div>
 </template>
 <script>
-import { mapActions } from 'vuex'
+import { reactive } from 'vue'
 // import { Field, Form } from 'vee-validate';
 
 export default {
     name: 'Login',
-    data() {
-        return {
-            form: {
-                email: '',
-                password: '',
-            },
-            showError: false,
-        }
-    },
-    methods: {
-        ...mapActions(['LogIn']),
-        async handleLogin() {
-            const user = new FormData()
-            user.append('email', this.form.email)
-            user.append('password', this.form.password)
+    setup() {
+        const user = reactive({
+            email: '',
+            password: '',
+        })
+        const showError = false
+
+
+        const login = async () => {
             try {
-                await this.LogIn(user)
-                this.router.push('/')
-                this.showError = false
+                await fetch('http://localhost:8800/api/excuses/user/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(user),
+                    })
+                    this.router.push('/')
+                    this.showError = false
             } catch (error) {
                 this.showError = true
-            }
+                }
         },
+
+        return {
+            user,
+            login,
+            showError,
+        }
     },
 }
 </script>

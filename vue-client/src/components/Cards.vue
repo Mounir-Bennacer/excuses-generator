@@ -6,7 +6,7 @@
             Canceling plans excuse generator
         </h1>
         <button
-            @click="$store.getters.shuffleExcuse"
+            @click="shuffleExcuse"
             class="uppercase bg-blue-600 w-full mt-6 px-5 py-5 font-semibold text-white rounded-md shadow-md hover:bg-blue-700 hover:shadow-lg"
         >
             Generate excuse
@@ -35,7 +35,9 @@
                     :key="intro._id"
                     :title="intro.title"
                     :selected="selectedIntro === intro._id"
-                    @click.passive="$store.commit('selectIntro', intro._id)"
+                    @click.passive="
+                        $store.commit('excuse/selectIntro', intro._id)
+                    "
                     :color="'bg-green-400 bg-opacity-70'"
                 />
                 <!-- </teleport> -->
@@ -52,7 +54,7 @@
                     :title="scapegoat.title"
                     :selected="selectedScapegoat === scapegoat._id"
                     @click.passive="
-                        $store.commit('selectScapegoat', scapegoat._id)
+                        $store.commit('excuse/selectScapegoat', scapegoat._id)
                     "
                     :color="'bg-yellow-400 bg-opacity-70'"
                 />
@@ -68,7 +70,9 @@
                     :key="delay._id"
                     :title="delay.title"
                     :selected="selectedDelay === delay._id"
-                    @click.passive="$store.commit('selectDelay', delay._id)"
+                    @click.passive="
+                        $store.commit('excuse/selectDelay', delay._id)
+                    "
                     :color="'bg-blue-400 bg-opacity-70'"
                 />
             </div>

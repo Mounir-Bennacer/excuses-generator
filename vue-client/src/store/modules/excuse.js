@@ -1,16 +1,16 @@
 const states = {
     intros : [],
-    intro : '',
+    intro : null,
     scapegoats: [],
-    scapegoat: '',
+    scapegoat: null,
     delays: [],
-    intro : '',
-    scapegoat: '',
-    delay: '',
+    intro : null,
+    scapegoat: null,
+    delay: null,
     selectedIntro: -1,
     selectedScapegoat: -1,
     selectedDelay: -1,
-    excuse : '',
+    excuse : null,
 }
 const actions = {
     async init({commit}){
@@ -82,6 +82,7 @@ const getters = {
 }
 
 export default {
+  namespaced: true,
   states,
   actions,
   mutations,
