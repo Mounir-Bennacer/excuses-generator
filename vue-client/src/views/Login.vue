@@ -59,7 +59,7 @@
                             />
                         </div>
                     </div>
-
+                    <Error v-if="showError" :message="message" />
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
                             <input
@@ -85,13 +85,7 @@
                             </router-link>
                         </div>
                     </div>
-                    <p
-                        v-if="showError"
-                        id="error"
-                        class="bg-red-200 py-3 px-4 rounded-md font-semibold text-red-600 shadow-md"
-                    >
-                        Username or Password is incorrect
-                    </p>
+
                     <div>
                         <button
                             type="submit"
@@ -123,10 +117,13 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { reactive, ref } from 'vue'
+import Error from '../components/Error'
+
 let user = reactive({
     email: '',
     password: '',
 })
+let message = ref('')
 let showError = ref(false)
 let router = useRouter()
 
@@ -138,8 +135,8 @@ let login = async () => {
         body: JSON.stringify(user),
     })
     if (!data.ok) {
-        console.log('error')
         showError.value = true
+        message.value = 'Sorry, Invalid Credentials'
         return
     }
     await router.push('/')
